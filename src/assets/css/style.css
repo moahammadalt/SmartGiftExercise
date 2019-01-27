@@ -1,0 +1,112 @@
+*{
+  outline: none !important;  
+}
+body{
+  background-color: #f8f8f8;
+}
+
+.header{
+  width: 80%;
+  margin: 0 auto;
+}
+.header {
+  font-size: 24px;
+  width: 100%;
+  height: 100px;
+  background: white;
+  text-align: center;
+  line-height: 50px;
+  top: 0;
+  left: 0;
+  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+}
+.logo{
+    margin-top: 2%;
+    height: 40px;
+}
+
+.product-container{
+  padding: 60px 100px 60px 100px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.app-container{
+  
+}
+
+.m-t-30{
+  margin-top: 30px;
+}
+
+.image-container{
+  border: #cfcfcf 1px solid;
+  border-radius: 5px;
+  
+}
+
+.image-body img{
+  width: 100%;
+  height: auto;
+  max-width: 350px;
+}
+
+.com-padding{
+  padding: 15px;
+}
+
+.decs-container{
+  margin: auto;
+}
+
+.attr-block{
+  margin: 20px 60px 50px 60px;
+}
+
+.modal {
+  position: fixed;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 55rem;
+  border-radius: 0.5rem;
+}
+.close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+  padding-bottom: 3px;
+}
+.close-button:hover {
+  background-color: darkgray;
+}
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+
+
