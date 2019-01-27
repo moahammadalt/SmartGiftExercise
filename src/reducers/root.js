@@ -1,17 +1,19 @@
-import { Auth_token } from './auth';
 import { Product } from './product';
 import { Modal } from './modal';
 import { Selected_sku } from './selected_sku';
-import storage from 'redux-persist/es/storage'
-import { persistCombineReducers } from 'redux-persist'
+import { Color_palette } from './color_palette';
+import storage from 'redux-persist/es/storage';
+import { persistCombineReducers } from 'redux-persist';
+import { Cached_apis } from './cached_apis';
 
 export default persistCombineReducers({ 
 	key: 'root',
 	storage,
-	whitelist: ['Auth_token'] 
+	whitelist: ['Cached_apis'] 
 }, {
-	Auth_token,
 	Product,
 	Selected_sku,
-	Modal
+	Modal,
+	Color_palette,
+	Cached_apis
 });

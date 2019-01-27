@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Alert from 'react-s-alert';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import * as H from './globals/helper';
 import Home from './components/home';
@@ -22,12 +21,15 @@ class App extends Component {
   }
 
   componentDidMount(){
-    
-    // check if the auth token is saved in the lcoalstorage to pass the authentication post request
-    if(H.check_value(this.props.Auth_token)){
+
+    const now_time = (Math.floor(Date.now() / 1000));
+
+    // check if the auth token is saved in the lcoalstorage to pass the authentication post request;
+    if(this.props.Cached_apis['/auth'] && (this.props.Cached_apis['/auth'].expire_at > now_time)){
       
-      H.set_authorization_token(this.props.Auth_token);
+      H.set_authorization_token(this.props.Cached_apis['/auth'].data);
       this.setState({authenticated: true});
+
     }
     else{
       let params = {
@@ -40,12 +42,15 @@ class App extends Component {
         this.props.Set_auth_token(data.token);
         H.set_authorization_token(data.token);
         this.setState({authenticated: true});
-        Alert.success('loged in', { timeout: 1500 });
+
+        // update cached api data with it's expire data
+        let cached_apis = {...this.props.Cached_apis};
+        cached_apis['/auth'] = {
+          expire_at: now_time + H.get_caching_time(),
+          data: data.token
+        }
+        this.props.Set_cached_apis(cached_apis);
         
-        this.props.Show_modal({
-          title: 'Welcome to SmartGift'
-        });
-  
       });
     }
     
@@ -53,7 +58,7 @@ class App extends Component {
   
   render() {
     return (
-      <div className="app-container">
+      <div className="app-container" style={{backgroundColor: this.props.Color_palette.background_color}}>
         
         <Router>
           <React.Fragment>
@@ -68,7 +73,7 @@ class App extends Component {
                   <Route path='*' exact={true} component={NotFound} />
                 </Switch>
               </React.Fragment> :
-              <div>you are not authenticated</div>
+              <div className="loading"></div>
             }
           </React.Fragment>
         </Router>
@@ -91,6 +96,12 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: 'SET_AUTHENTICATION_TOKEN',
         payload: val
+      });
+    },
+    Set_cached_apis: (obj) => {
+      dispatch({
+        type: 'SET_CACHED_APIS',
+        payload: obj
       });
     }
   };

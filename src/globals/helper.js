@@ -6,9 +6,9 @@ export const create_hash = (arr, key) => {
 	var Hash = function () {
 		this.data = {};
 		if (arr && Array.isArray(arr)) {
-			arr.map((o, i) => {
+			for(let o in arr){
 				this.data[o[key]] = o;
-			});
+			}
 			this.size = arr.length;
 		}
 		else {
@@ -30,8 +30,10 @@ export const create_hash = (arr, key) => {
 export const check_value = (value, key) => {
 
 	value = key ? key.split(".").reduce((o, x) => (typeof o == "undefined" || o === null) ? o : o[x], value) : value;
-	return (value === undefined || value === null || (!value && value != 0) || value === '' || /^\s*$/.test(value) || (typeof value === 'object' && is_obj_empty(value))) ? false : true;
+	return (value === undefined || value === null || (!value && value !== 0 && value !== '0') || value === '' || /^\s*$/.test(value) || (typeof value === 'object' && is_obj_empty(value))) ? false : true;
 };
+
+export const get_caching_time = () => 3600;
 
 export const set_authorization_token = token => {
 
@@ -66,7 +68,6 @@ export const api = {
 			if(success){
 				success(data && data.data && data.data.data ? data.data.data : data && data.data ? data.data : data);
 			}
-			Alert.success('success', { timeout: 1500 });
 		}).catch(err => fail ? fail(err) : Handler_error(err));
 	},
 

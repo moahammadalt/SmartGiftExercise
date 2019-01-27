@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import * as H from '../globals/helper';
-import { Panel } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Link, NavLink,match } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class Home extends Component {
 
@@ -19,15 +17,17 @@ class Home extends Component {
   
   render() {
     return (
-			<div className="container m-t-30">
+			<div className="home-container container m-t-30">
+			<h3 className="col-md-6 col-md-offset-3 m-b-30">Choose product: <br /></h3>
+			
 			{this.state.products.map((code, index) => (
 				<div key={index} className="row">
-					<div className="col-md-6">
+					<div className="col-md-6 col-md-offset-3">
 						<div className="panel panel-info">
 							<div className="panel-heading">product:</div>
 							<div className="panel-body">
 								<h4 className="col-md-9">{code}</h4>
-								<Link to={`/product/${code}`}>go to product</Link>
+								<Link to={`/product/${code}`}>go to product {' >'}</Link>
 							</div>
 						</div>
 					</div>

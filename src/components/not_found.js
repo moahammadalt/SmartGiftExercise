@@ -3,8 +3,8 @@ class NotFound extends Component {
   
   render() {
     return (
-      <div>
-				this path is not found
+      <div className="text-center">
+				<h1>This path is not found</h1>
 			</div>
     );
   }

@@ -9,7 +9,7 @@ class ProductDecs extends Component {
         <div className="panel panel-default">
           <div className="panel-heading">product details:</div>
           <div className="panel-body text-center">
-            <h5>{this.props.Product.shortDesc}</h5>
+            <h5 dangerouslySetInnerHTML={{__html: this.props.Product.shortDesc}}></h5>
           </div>
         </div>
       </div>
