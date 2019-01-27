@@ -57,7 +57,7 @@ export const is_obj_empty = obj => {
 };
 
 export const get_host_url = () => {
-	return `${(window.location.hostname === 'localhost' || window.location.hostname === 'mahrek-iga.herokuapp.com') ? 'http://api-dev.smartgiftit.com' : `https://production_host.com`}`;
+	return `${(window.location.hostname === 'localhost' || window.location.hostname === 'smartgift-exercise.herokuapp.com') ? 'http://api-dev.smartgiftit.com' : `https://production_host.com`}`;
 };
 
 export const api = {
