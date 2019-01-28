@@ -29,7 +29,7 @@ class ProductAttr extends Component {
       <div className="attr-container com-padding">
         {Object.keys(this.props.Product.attrList).map((attr, i)=> {return (
           <div className="attr-block" key={i}>
-            <label htmlFor={attr}>{attr}:</label>
+            <h3 htmlFor={attr}>{attr}:</h3>
             <select className="form-control" id={attr} defaultValue={this.props.Product.selectedSku.attrs[attr]} onChange={(e) => this.change_sku(attr, e.target.value)} >
               {this.props.Product.attrList[attr].map((val, index) => 
                 <option key={index} value={val}>{val}</option>

@@ -22,7 +22,7 @@ class ProductSubmitBtn extends Component {
   render() {
     return (
       <div className="btn-container com-padding">
-        <button className="btn btn-primary btn-lg" onClick={() => this.submit_product()}>Sumbit</button>
+        <button className="btn btn-primary btn-lg" onClick={() => this.submit_product()}>Submit</button>
       </div>
     );
   }

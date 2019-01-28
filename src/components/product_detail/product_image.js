@@ -49,7 +49,7 @@ class ProductImage extends Component {
             disabled={this.props.Selected_sku.images.length === this.state.current_image + 1} 
             onClick={() => this.setState({current_image: this.state.current_image + 1})}
           >
-            {'< '}back
+            {'< '}previous
           </button>
 
           <button 
