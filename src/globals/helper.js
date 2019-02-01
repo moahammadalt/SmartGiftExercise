@@ -68,7 +68,7 @@ export const api = {
 			if(success){
 				success(data && data.data && data.data.data ? data.data.data : data && data.data ? data.data : data);
 			}
-		}).catch(err => fail ? fail(err) : Handler_error(err));
+		}).catch(err => fail ? fail(err) : error_handler(err));
 	},
 
 	get: (api, success, fail) => {
@@ -77,11 +77,11 @@ export const api = {
 			if(success){
 				success(data && data.data && data.data.data ? data.data.data : data && data.data ? data.data : data);
 			}
-		}).catch(err => fail ? fail(err) : Handler_error(err));
+		}).catch(err => fail ? fail(err) : error_handler(err));
 	},
 };
 
-export const Handler_error = err => {
+export const error_handler = err => {
 
 	let status = err.response !== undefined && err.response.status ? `[${err.response.status}]` : '';
 	if (err.response) {
