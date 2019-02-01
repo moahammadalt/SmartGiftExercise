@@ -19,7 +19,17 @@ class ProductAttr extends Component {
     // here we get the new selected attr
     this.setState({current_attrs: tmp_attr}, ()=>{
       // search for the propriate sku attr to change the selected_sku object
-      let selected_sku = this.props.Product.skus.filter(obj => JSON.stringify(obj.attrs) === JSON.stringify(this.state.current_attrs) )[0];
+      let selected_sku = this.props.Product.skus.filter(obj => {
+        let attr_matched = true;
+        for(var key in obj.attrs){
+          if(obj.attrs[key] !== this.state.current_attrs[key]){
+            attr_matched = false;
+          }
+        }
+        if(attr_matched){
+          return obj;
+        }
+      })[0];
       this.props.Set_selected_sku(selected_sku);
     });
   }
